@@ -9,8 +9,14 @@ gulp.task('browser-sync', function () {
     }
   });
 });
+
+gulp.task('bs-reload', function () {
+  browserSync.reload();
+});
 // define tasks here
 gulp.task('default',  ['browser-sync'], function(){
+
+  gulp.watch(['*.html','/*.html'],['bs-reload']);
   // run tasks here
   // set up watch handlers here
 });

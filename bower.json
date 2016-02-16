@@ -21,6 +21,7 @@
     "backbone": "^1.2.3",
     "react": ">0.1.0",
     "angular": "x.x.x",
-    "foundation": "~5.5.3"
+    "foundation-sites": "~6.1.0",
+    "motion-ui": "~1.1.0"
   }
 }
