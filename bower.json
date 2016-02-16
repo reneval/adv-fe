@@ -1,0 +1,26 @@
+{
+  "name": "advFE",
+  "homepage": "https://github.com/reneval/adv-fe",
+  "authors": [
+    "Sergii Tishenko"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "=1.8.3",
+    "backbone": "^1.2.3",
+    "react": ">0.1.0",
+    "angular": "x.x.x",
+    "foundation": "~5.5.3"
+  }
+}

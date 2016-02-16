@@ -1,0 +1,25 @@
+{
+  "name": "adv-fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reneval/adv-fe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reneval/adv-fe/issues"
+  },
+  "homepage": "https://github.com/reneval/adv-fe#readme",
+  "dependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.1",
+    "gulp-sequence": "^0.4.5"
+  }
+}
