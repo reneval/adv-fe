@@ -21,7 +21,8 @@
     "backbone": "^1.2.3",
     "react": ">0.1.0",
     "angular": "x.x.x",
-    "foundation-sites": "~6.1.0",
-    "motion-ui": "~1.1.0"
+    "foundation-sites": "~6.1.2",
+    "motion-ui": "~1.1.0",
+    "handlebars": "^4.0.5"
   }
 }

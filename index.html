@@ -5,17 +5,101 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adv FE</title>
+    <link rel="stylesheet" href="bower_components/foundation-sites/dist/foundation.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
-    <meta charset="UTF-8">
-    <title></title>
+<meta charset="UTF-8">
+<title></title>
 </head>
 <body>
+<div class="top-bar">
+    <div>
+        <div class="top-bar-left">Logo</div>
+        <div class="top-bar-right">mail@site.com</div>
+    </div>
+</div>
+
+<!--<div class="posts-container__list"></div>-->
+
+
+<div class="post-container"></div>
+
+
+<script id="post-template" type="text/x-handlebars-template">
+    <div class="row medium-8 large-7 columns">
+        <div class="blog-post">
+            <img class="thumbnail" src={{post.imgUrl}}>
+
+            <p><span>{{user.name}} : </span>{{post.description}}</p>
+            {{#if user.following.tags}}
+            <div class="callout">
+                <ul class="menu simple">
+                    {{#each user.following.tags}}
+                    {{#if active}}
+                    <li><a href="#">{{name}}</a></li>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+            {{/if}}
+        </div>
+        {{#if comments}}
+        {{#each comments}}
+        <div class="media-object stack-for-small">
+            <div class="media-object-section">
+                <p><span>{{username}} : </span>{{text}}</p>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+
+    </div>
+    {{#if relatedPosts}}
+    <div class="row row small-up-2 medium-up-3 large-up-4"data-equalizer>
+        {{#each relatedPosts}}
+        <div class="column medium-4">
+            <div class="callout" data-equalizer-watch>
+            <img class="thumbnail related-post_img" src={{imgUrl}} >
+            <h5>Nulla </h5>
+        </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+
+
+    <div class="row" data-equalizer   id="test-eq">
+        <div class="medium-4 columns">
+            <div class="callout" data-equalizer-watch>
+                <img src= "https://s-media-cache-ak0.pinimg.com/474x/3d/42/1a/3d421a4d68a4d2d5234d103560395369.jpg">
+            </div>
+        </div>
+        <div class="medium-4 columns">
+            <div class="callout" data-equalizer-watch>
+                <p>Pellentesque habitant morbi tristique senectus et netus et, ante.</p>
+            </div>
+        </div>
+        <div class="medium-4 columns">
+            <div class="callout" data-equalizer-watch>
+                <img src= "https://s-media-cache-ak0.pinimg.com/474x/9d/06/42/9d064235800e8aaa14c4a462671f0bf5.jpg">
+            </div>
+        </div>
+    </div>
+
+</script>
 
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/handlebars/handlebars.min.js"></script>
 <script src="bower_components/what-input/what-input.js"></script>
 <script src="bower_components/foundation-sites/dist/foundation.js"></script>
+<script src="bower_components/foundation-sites/js/foundation.equalizer.js"></script>
+
+<!-- inject:js -->
 <script src="js/app.js"></script>
+<script src="js/data.js"></script>
+<!-- endinject -->
+
 </body>
 </html>

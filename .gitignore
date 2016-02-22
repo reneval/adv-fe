@@ -1,6 +1,8 @@
 node_modules
 bower_components
 sftp-config.json
+client_build
+copy-static
 _build
 npm-debug.log
 .idea
