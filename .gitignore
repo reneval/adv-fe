@@ -3,6 +3,8 @@ bower_components
 sftp-config.json
 client_build
 copy-static
+test
+libs
 _build
 npm-debug.log
 .idea

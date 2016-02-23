@@ -13,6 +13,11 @@ var gulpif = require('gulp-if');
 var jscs = require('gulp-jscs');
 var htmlhint = require("gulp-htmlhint");
 var htmlmin = require('gulp-htmlmin');
+var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
+var csscomb = require('gulp-csscomb');
+var gulpGitStatus = require('gulp-git-status');
+$ = require('gulp-load-plugins')(),
 
 gulp.task('bower', function () {
   return bower();
@@ -29,12 +34,33 @@ gulp.task('clean', function (cb) {
   ], cb);
 });
 
+
+gulp.task('csscomb', function () {
+  return gulp.src('./styles/*.less')
+    .pipe(gulpif(!argv.all,
+    gulpGitStatus({
+      excludeStatus: 'unchanged'
+    })))
+    .pipe(gulpif(!argv.all,
+      gulpGitStatus({
+      excludeStatus: 'untracked'
+    })))
+    .pipe($.debug({title: 'csscomb on:'}))
+    .pipe(csscomb().on('error', handleError))
+    .pipe(gulp.dest(function (file) {
+      return file.base;
+    }))
+});
+
 gulp.task('css', function () {
   return gulp.src('./styles/**/*.less')
     .pipe(less({
       paths: [ path.join(__dirname, 'less', 'includes') ]
     }))
+    .pipe(sourcemaps.init())
+    .pipe(autoprefixer())
     .pipe(concat('styles.css'))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulpif(argv.prod, minifyCss()))
     .pipe((gulp.dest('./client_build/static/')));
 });
@@ -75,7 +101,7 @@ gulp.task('htmlhint', function () {
 
 gulp.task('copy-static', function () {
   return  gulp.src('./client_src/**/*.{png,jpg,svg,html}')
-  .pipe(gulp.dest('./copy-static/'))
+  .pipe(gulp.dest('./client_build/copy-static/'))
 });
 
 
@@ -105,9 +131,14 @@ gulp.task('bs-reload', function () {
   browserSync.reload();
 });
 
+gulp.task('style',  ['jscs','htmlhint']);
 
 gulp.task('default', ['libs','build', 'watch','index','browser-sync'], function () {
-  gulp.watch(['*.html', 'pages/*.html'], ['bs-reload']);
-  gulp.watch(['*.js', 'js/**/*.js'], ['index', 'bs-reload']);
-  gulp.watch(['*.css', 'styles/**/*.css'], ['bs-reload']);
+
 });
+
+function handleError(err) {
+  console.log(err.toString());
+  this.emit('end');
+  return this;
+}
