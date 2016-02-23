@@ -19,7 +19,7 @@
       }, {
         username: 'Alice',
         text: 'Alice comment'
-      }]
+      }];
     },
     getCurrentPost: function () {
       // parse ?id=2 => 2

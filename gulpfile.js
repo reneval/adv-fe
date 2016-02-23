@@ -134,7 +134,6 @@ gulp.task('bs-reload', function () {
 gulp.task('style',  ['jscs','htmlhint']);
 
 gulp.task('default', ['libs','build', 'watch','index','browser-sync'], function () {
-
 });
 
 function handleError(err) {
